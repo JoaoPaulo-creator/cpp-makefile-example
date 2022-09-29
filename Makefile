@@ -2,11 +2,12 @@
 CXX=g++ -std=c++20
 CCFLAGS= -Wall -g -MMD
 LD=g++
-OBJS= main.o escrever.o operacoes.o
-$(TARGET): $(OBJS) $(LD) -o $(TARGET) $(OBJS) @rm -f *.o *.d
+OBJS=main.o operacoes.o
+$(TARGET): $(OBJS)
+		$(LD) -o $(TARGET) $(OBJS)
+		@rm -f *.o *.d
 
-main.o: main.cpp $(CC) -c $(CCFLAGS) main.cpp -o main.o
-
-escrever.o: escrever.cpp $(CC) -c $(CCFLAGS) escrever.cpp -o escrever.o
-
-operacoes.o: operacoes.cpp $(CC) -c $(CCFLAGS) operacoes.cpp -o operacoes.o
+main.o: main.cpp
+		$(CC) -c $(CCFLAGS) main.cpp -o main.o
+operacoes.o: operacoes.cpp
+		$(CC) -c $(CCFLAGS) operacoes.cpp -o operacoes.o
